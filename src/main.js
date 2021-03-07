@@ -4,10 +4,8 @@ function rawTextToWords(text) {
 
 function isStopWord(word) {
     return ['.', ',', ';', '?', '!']
-        .findIndex((stopper) => word.endsWith(stopper)) !== -1
-
+        .findIndex((stopper) => word.endsWith(stopper)) !== -1;
 }
-
 
 
 function main() {
@@ -15,7 +13,8 @@ function main() {
     let onSpeedChangeResolver = null;
     let words = null;
     input_speed.oninput = () => {
-        currentSpeedMs = Number(input_speed.value);
+        const [min, max] = [input_speed.min, input_speed.max].map(v => Number(v));
+        currentSpeedMs = min + max - Number(input_speed.value);
         const wpm = Math.round(60e3 / currentSpeedMs);
         p_wpm.innerText = `${wpm} wpm`;
         if (onSpeedChangeResolver) {
@@ -24,7 +23,7 @@ function main() {
         }
     }
     input_speed.oninput();
-    
+
     const cancellableSleepMs = (ms) => {
         const sleepPromise = new Promise(resolve => setTimeout(resolve, ms));
         let cancelResolver = null;
@@ -51,7 +50,7 @@ function main() {
         if (words.length) {
             renderNextWord();
         } else {
-            p_currentWord.innerText = 'YOUR READING IS COMPLETE.'
+            p_currentWord.innerText = 'THE END.'
         }
     };
 
