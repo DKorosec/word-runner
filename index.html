@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <script src="src/main.js"></script>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #div_currentWord {
+            position: relative;
+            top: 50%;
+            text-align: center;
+            color: white;
+            font-size: 10vw;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        #input_speed {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+        }
+
+        #p_wpm {
+            color: darkcyan !important;
+            font-size: 2.5vw;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+        }
+
+        #div_label {
+            position: absolute;
+            font-size: 1.5vw;
+            color: darkcyan;
+            left: 50%;
+            bottom: 0%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div_currentWord">
+        <p id="p_currentWord"></p>
+        <input id="input_speed" type="range" min="10" max="1000" />
+        <p id="p_wpm"></p>
+    </div>
+    <div id="div_label">
+        <input type="checkbox" id="input_useBreak" name="input_useBreak" value="1" checked>
+        <label id="label_useBreak" for="input_useBreak">Double stop on punctuations</label>
+    </div>
+</body>
+<script> main(); </script>
+
+</html>
